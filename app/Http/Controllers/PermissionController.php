@@ -24,7 +24,9 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('theme.backoffice.pages.permission.create', [
+            'roles' => \App\Role::all()
+        ]);
     }
 
     /**

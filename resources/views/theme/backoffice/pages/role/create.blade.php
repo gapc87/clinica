@@ -5,6 +5,11 @@
 @section('head')
 @endsection
 
+@section('breadcrumbs')
+    <li><a href="{{ route('backoffice.role.index') }}">Roles del sistema</a></li>
+    <li>Nuevo rol</li>
+@endsection
+
 @section('content')
     <div class="section">
         <p class="caption">Introduce los datos para crear un nuevo rol.</p>
