@@ -19,4 +19,15 @@ class Permission extends Model
     {
         return $this->belongsToMany('App\User')->withTimestamps();
     }
+
+    public function create($request)
+    {
+        $rpermission = self::create($request->all() + [
+                'slug' => Str::slug($request->name, '-')
+            ]);
+
+        toast('Permiso guardado', 'success', 'top-right');
+
+        return $rpermission;
+    }
 }

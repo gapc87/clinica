@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Permission;
+use App\Http\Requests\Permission\StoreRequest;
 use Illuminate\Http\Request;
+use App\Permission;
 
 class PermissionController extends Controller
 {
@@ -32,12 +33,14 @@ class PermissionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreRequest $request
+     * @param Permission $permission
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request, Permission $permission)
     {
-        //
+        $permission = $permission->store($request);
+        return redirect()->route('backoffice.role.show', $permission);
     }
 
     /**

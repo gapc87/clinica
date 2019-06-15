@@ -46,6 +46,13 @@
                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('role_id')
+                                        <div class="card-panel gradient-45deg-red-pink gradient-shadow">
+                                            <span class="white-text">
+                                                {{ $message }}
+                                            </span>
+                                        </div>
+                                        @enderror
                                     </div>
                                 </div>
 
