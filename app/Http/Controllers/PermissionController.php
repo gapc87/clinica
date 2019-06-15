@@ -40,7 +40,7 @@ class PermissionController extends Controller
     public function store(StoreRequest $request, Permission $permission)
     {
         $permission = $permission->store($request);
-        return redirect()->route('backoffice.role.show', $permission);
+        return redirect()->route('backoffice.permission.show', $permission);
     }
 
     /**

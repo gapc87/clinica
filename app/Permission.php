@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Permission extends Model
 {
     protected $fillable = [
-        'name', 'slug', 'description'
+        'name', 'slug', 'description', 'role_id'
     ];
 
     public function role()
@@ -20,14 +21,14 @@ class Permission extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
     }
 
-    public function create($request)
+    public function store($request)
     {
-        $rpermission = self::create($request->all() + [
+        $permission = self::create($request->all() + [
                 'slug' => Str::slug($request->name, '-')
             ]);
 
         toast('Permiso guardado', 'success', 'top-right');
 
-        return $rpermission;
+        return $permission;
     }
 }
