@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Permission\StoreRequest;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Permission;
 
@@ -65,7 +66,9 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        //
+        $roles = Role::all();
+
+        return view('theme.backoffice.pages.permission.edit', compact(['permission', 'roles']));
     }
 
     /**
@@ -77,7 +80,11 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        //
+        $permission->my_update($request);
+
+        toast('Permiso actualizado', 'success', 'top-right');
+
+        return redirect()->route('backoffice.permission.show', $permission);
     }
 
     /**

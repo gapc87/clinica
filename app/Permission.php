@@ -31,4 +31,11 @@ class Permission extends Model
 
         return $permission;
     }
+
+    public function my_update($request)
+    {
+        self::update($request->all() + [
+                'slug' => Str::slug($request->name, '-')
+            ]);
+    }
 }
