@@ -90,11 +90,18 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Permission  $permission
+     * @param  \App\Permission $permission
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Permission $permission)
     {
-        //
+        $role = $permission->role;
+
+        $permission->delete();
+
+        toast('Permiso eliminado con éxito', 'success', 'top-right');
+
+        return redirect()->route('backoffice.role.show', $role);
     }
 }
