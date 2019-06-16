@@ -30,6 +30,36 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Permisos del rol</span>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th data-field="name">Nombre</th>
+                                    <th data-field="slug">Slug</th>
+                                    <th data-field="description">Descripción</th>
+                                    <th data-field="actions">Acciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($permissions as $permission)
+                                    <tr>
+                                        <td><a href="{{ route('backoffice.permission.show', $permission) }}">{{ $permission->name }}</a></td>
+                                        <td>{{ $permission->slug }}</td>
+                                        <td>{{ $permission->description }}</td>
+                                        <td><a href="{{ route('backoffice.permission.edit', $permission) }}">Editar</a></td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

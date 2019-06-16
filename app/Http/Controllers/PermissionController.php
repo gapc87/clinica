@@ -15,7 +15,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = Permission::all();
+
+        return view('theme.backoffice.pages.permission.index', compact('permissions'));
     }
 
     /**
@@ -40,6 +42,7 @@ class PermissionController extends Controller
     public function store(StoreRequest $request, Permission $permission)
     {
         $permission = $permission->store($request);
+
         return redirect()->route('backoffice.permission.show', $permission);
     }
 
